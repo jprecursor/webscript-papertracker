@@ -32,6 +32,11 @@ body {
   font-size: 100%;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 button {
   background-color: var(--swatch2);
   border: 2px solid var(--swatch0);
@@ -129,8 +134,8 @@ h1 {
   display: block;
   font-size: inherit;
   margin: auto;
-  width: 45vw;
-  max-width: 500px;
+  width: 60vw;
+  max-width: 600px;
 }
 
 /* game board
@@ -172,7 +177,6 @@ h1 {
 }
 
 #board .ui {
-  background-color: rgba(0,0,0,0.5);
   align-items: center;
   display: flex;
   height: 100%;
