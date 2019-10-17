@@ -56,8 +56,6 @@ class DetectTiles:
         
         ## check each ids types and place them in position
         mobjects = []
-        xplotobj = []
-        yplotobj = []
         cols = []
         rows = []
         labels = []
@@ -141,10 +139,9 @@ class DetectTiles:
         if(len(rows) != len(cols)) or (len(labels) != len(cols)) or (len(labels) != len(rows)):
             print('dim error!!')
         else:
-            {
+            objects = {
                 'column':cols,
                 'rows': rows,
                 'tile_type': labels
             }
-            
-        return ids.tolist()
+            return objects
