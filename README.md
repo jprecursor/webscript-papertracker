@@ -35,18 +35,31 @@ An educational platform for engaging 14–140 year-olds with music, technology, 
 
 ## features
 
-- [ ] opencv detect tile grid coordinates
-- [ ] flask to return tile coordinates
-- [ ] place tiles (after above step)
-- [ ] add pulse collision rule(s)
+**alpha**
+- [x] opencv detect tile grid coordinates
+- [x] flask to return tile coordinates
+- [x] place tiles (after above step)
+- [x] re-snap option if invalid json data
+- [ ] (TEST) simultaneous sessions (server prefixes images names?)
+- [ ] aggregate first and second photo coordinates
 - [ ] monitor interface (to observe what the user sees on their phone)
+- [ ] add pulse collision rule(s)
+
+**beta**
+- [ ] cache audio (service worker?)
+- [ ] universal config (for js, python, etc. from a single file)
 - [ ] server-side grid and tile detection?
 - [ ] during simulation, option to step (and step backward?)
-- [ ] orientable arrow tile
+- [ ] orientable (horizontal/vertical) tiles
 
 ## bugs
 
 - [x] convert to single page app
- - [ ] camera and fullscreen should be prompted on splash/instructions page
+ - [x] camera and fullscreen should be prompted on splash/instructions page
  - [x] re-snap button must not reload the page
+- [x] delay buttons and board until server response
 - [ ] tone stutter (after multiple plays)
+
+---
+
+Created by Andre Mūrnieks, Jon He, Radek Rudnicki, Tristan Bunn.

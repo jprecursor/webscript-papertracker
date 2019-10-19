@@ -1,7 +1,7 @@
 /**
  * Board module for drawing and controlling the board (and cells and pulses arrays).
- * Tone sounds require the Tone.js library:
- * <script src="./static/Tone.js"></script>
+ * For Tone.js, uncomment the relevant line in templates/jslibs.html.
+ * For fontawesome, uncomment the relevant line in templates/jslibs.html.
  * @module Board
  */
 
@@ -88,11 +88,14 @@ export class Board {
   /**
    * Add a new half-tile to the cells and pulses arrays.
    *
-   * @param {number} r The row address.
-   * @param {number} c The column address.
+   * @param {number} r1 The row address beginning at 1.
+   * @param {number} c1 The column address beginning at 1.
    * @param {Tile} tile A tile object.
    */
-  addTile(c, r, tile) {
+  addTile(c1, r1, tile) {
+    // grid axes to begin at 1 and 1 (not zero)
+    let c = c1-1;
+    let r = r1-1;
     // add tile to cells array
     this.cells[r][c].tile = tile;
 
@@ -100,12 +103,12 @@ export class Board {
     // add the starting position of any pulse to the pulses array
     for (let [key, value] of Object.entries(tileicons)) {
       // check for an arrow-color tile combo
-      if (tileicons[0].charAt(0) == '#') {
-        this.pulses[r][c].color = value;
+      if (tileicons[0].charAt(0) === '#') {
+        this.pulses[r][c].color = tileicons[0];
         this.pulses[r][c].dir = this.cells[r][c].tile.tilepair[1];
       }
-      else if (tileicons[1].charAt(0) == '#') {
-        this.pulses[r][c].color = value;
+      else if (tileicons[1].charAt(0)) {
+        this.pulses[r][c].color = tileicons[1];
         this.pulses[r][c].dir = this.cells[r][c].tile.tilepair[0];
       }
     }
@@ -127,10 +130,7 @@ export class Board {
         for (let i in tileicons) {
           const elem = '.tile'+(parseInt(i)+1);
 
-          if (tileicons[i].charAt(0) == '#') {
-            cell.querySelectorAll(elem)[0].style.backgroundColor = tileicons[i];
-          }
-          else if (this.step == 0) {
+          if (tileicons[i].charAt(0) !== '#' && this.step === 0) {
             cell.querySelectorAll(elem)[0].innerHTML = tileicons[i];
           }
         }
@@ -232,12 +232,12 @@ export class Board {
 
         for (let i in tilepair) {
           // change pulse direction
-          if (tilepair[i] == 'N' || tilepair[i] == 'S' ||
-              tilepair[i] == 'W' || tilepair[i] == 'E') {
+          if (tilepair[i] === 'N' || tilepair[i] === 'S' ||
+              tilepair[i] === 'W' || tilepair[i] === 'E') {
             this.pulses[r][c].dir = tilepair[i];
           }
-          // instruments
-          if (tilepair[i].charAt(0) == 'A') {
+          // play any instruments
+          if (tilepair[i].substring(0, 2) === 'A_') {
             this.playTile(tileaudio[i]);
           }
         }
