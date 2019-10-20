@@ -35,12 +35,6 @@ def snap():
 
     # detect tiles after x-many photos snapped
     if int(count) == 2:
-<<<<<<< HEAD
-        coords = DetectTiles(['snap1', 'snap2'], 'static/tmp/')
-        return jsonify(coords.arucoDetect())
-        #print(coords.arucoDetect())
-        #return jsonify('aruco coords')
-=======
         coords = DetectTiles(sessionid+'-2', app.config['UPLOADS'])
         coords = DetectTiles('test', app.config['MARKERTEST']) # uncomment for test image
         result = coords.arucoDetect()
@@ -78,7 +72,6 @@ def transformCVforJSON(cvlist):
             tilelist.append(cell)
 
     return tilelist
->>>>>>> upstream/master
 
 def aggregateCoords(coordlists):
     '''
